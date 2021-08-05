@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://noobchamp.github.io/atom.xml" rel="self" type="application/atom+xml" /><link href="https://noobchamp.github.io/" rel="alternate" type="text/html" /><updated>2021-08-05T07:49:30+00:00</updated><id>https://noobchamp.github.io/atom.xml</id><title type="html">Hola, soy José Oliva</title><subtitle>Y este es mi blog personal</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;picture&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;links&quot;=&gt;[{&quot;title&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;icon&quot;=&gt;nil}]}</name></author><entry><title type="html">SQL*Plus - Historial en Unix-Linux</title><link href="https://noobchamp.github.io/linux/oracle/SQL-plus-prompt/" rel="alternate" type="text/html" title="SQL*Plus - Historial en Unix-Linux" /><published>2021-07-19T19:00:00+00:00</published><updated>2021-07-19T19:00:00+00:00</updated><id>https://noobchamp.github.io/linux/oracle/SQL-plus-prompt</id><content type="html" xml:base="https://noobchamp.github.io/linux/oracle/SQL-plus-prompt/">&lt;p&gt;&lt;img src=&quot;/images/sqlplus.webp&quot; alt=&quot;center-aligned-image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;introducción&quot;&gt;Introducción&lt;/h1&gt;
+&lt;p&gt;Has instalado recientemente Oracle y al usar SQL*Plus no funciona el historial?&lt;br /&gt;
+El prompt de SQL*Plus en Unix y Linux por defecto no tiene historial ni es posible usar las flechas de dirección para moverte hacia delante y atrás además de no poder navegar por el historial como indicábamos.&lt;/p&gt;
+
+&lt;h2 id=&quot;sqlplus---habilitar-las-fechas-de-dirección&quot;&gt;SQL*Plus - Habilitar las fechas de dirección&lt;/h2&gt;
+&lt;p&gt;Vamos a instalar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rlwrap&lt;/code&gt; para solucionar nuestro problema.&lt;/p&gt;
+
+&lt;h3 id=&quot;requisitos&quot;&gt;Requisitos&lt;/h3&gt;
+&lt;p&gt;Necesitamos instalar gcc,wget y GNU readline:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum update &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+yum &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;gcc readline-devel &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Descarga e instalación&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /tmp/
+wget https://github.com/hanslub42/rlwrap/archive/refs/heads/master.zip
+unzip master.zip
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;rlwrap-master/
+autoreconf &lt;span class=&quot;nt&quot;&gt;--install&lt;/span&gt;
+./configure
+make
+make &lt;span class=&quot;nb&quot;&gt;test
+&lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;añadir-un-alias&quot;&gt;Añadir un alias&lt;/h2&gt;
+&lt;p&gt;Vamos a añadir el alias al usuario oracle para que cada vez que usemos SQL*Plus sea junto a rlwrap.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;EOF&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt; &amp;gt;&amp;gt; /home/oracle/.bashrc
+alias sqlplus='rlwrap sqlplus'
+alias rman='rlwrap rman'
+&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;EOF
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;prueba-ahora&quot;&gt;¡Prueba ahora!&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;su - oracle
+sqlplus sys / as sysdba
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;¡Nos vemos!&lt;/p&gt;</content><author><name>Yoko</name></author><category term="Linux" /><category term="Oracle" /><category term="Red Hat" /><category term="CentOS" /><category term="Oracle" /><category term="Sqlplus" /><summary type="html">Introducción Has instalado recientemente Oracle y al usar SQL*Plus no funciona el historial? El prompt de SQL*Plus en Unix y Linux por defecto no tiene historial ni es posible usar las flechas de dirección para moverte hacia delante y atrás además de no poder navegar por el historial como indicábamos.</summary></entry><entry><title type="html">VirtualBox Guest Addittions en Red Hat 8 y CentOS 8</title><link href="https://noobchamp.github.io/rhel/centos/RedHat8-VirtualBox/" rel="alternate" type="text/html" title="VirtualBox Guest Addittions en Red Hat 8 y CentOS 8" /><published>2021-06-18T18:30:40+00:00</published><updated>2021-06-18T18:30:40+00:00</updated><id>https://noobchamp.github.io/rhel/centos/RedHat8-VirtualBox</id><content type="html" xml:base="https://noobchamp.github.io/rhel/centos/RedHat8-VirtualBox/">&lt;h1 id=&quot;introducción&quot;&gt;Introducción&lt;/h1&gt;
+&lt;p&gt;Cuando instalamos Red Hat 8 y/o CentOS 8 en VirtualBox siempre tenemos el inconveniente de que la vista no se ajusta a la ventana.&lt;br /&gt;
+El propósito de este mini tutorial es instalar rápidamente Guest Addiction en RHEL 8 rápidamente.&lt;/p&gt;
+
+&lt;h2 id=&quot;comandos&quot;&gt;Comandos&lt;/h2&gt;
+&lt;p&gt;Antes de ejecutar nada, la máquina debe tener &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELINUX&lt;/code&gt; en modo &lt;em&gt;permissive&lt;/em&gt; o &lt;em&gt;disabled&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yum groupinstall &lt;span class=&quot;s2&quot;&gt;&quot;Development Tools&quot;&lt;/span&gt;
+yum &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; kernel-devel elfutils-libelf elfutils-libelf-devel
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;instalar-guest-additions&quot;&gt;Instalar Guest Additions&lt;/h2&gt;
+&lt;p&gt;Simplemente, en la ventana de VirtualBox de la máquina te vas a la pestaña &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dispositivos&lt;/code&gt; y luego presiona &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Insertar imagen de CD de las &quot;Guest Additions&quot;&lt;/code&gt;.&lt;br /&gt;
+Saldrá un diálogo en la máquina, presiona &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run&lt;/code&gt;.
+Si el diálogo no te aparece puedes buscarlo en el directorio o si el caso es que no instalaste entorno gráfico “&lt;em&gt;bravo&lt;/em&gt;”, tienes que buscar el punto de montaje del cd y lanzar el script &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VBoxLinuxAdditions.run&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;reinicia-la-máquina-y-ya-está&quot;&gt;Reinicia la máquina… y ya está&lt;/h4&gt;
+
+&lt;p&gt;¡Nos vemos!&lt;/p&gt;</content><author><name>Pancho</name></author><category term="RHEL" /><category term="CentOS" /><category term="Red Hat" /><category term="CentOS" /><category term="VirtualBox" /><category term="Guest Additions" /><summary type="html">Introducción Cuando instalamos Red Hat 8 y/o CentOS 8 en VirtualBox siempre tenemos el inconveniente de que la vista no se ajusta a la ventana. El propósito de este mini tutorial es instalar rápidamente Guest Addiction en RHEL 8 rápidamente.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/redhat8.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/redhat8.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FreeSwitch: Variables</title><link href="https://noobchamp.github.io/freeswitch/variables-freeswitch/" rel="alternate" type="text/html" title="FreeSwitch: Variables" /><published>2021-04-28T17:00:40+00:00</published><updated>2021-04-28T17:00:40+00:00</updated><id>https://noobchamp.github.io/freeswitch/variables-freeswitch</id><content type="html" xml:base="https://noobchamp.github.io/freeswitch/variables-freeswitch/">&lt;h1 id=&quot;introducción&quot;&gt;Introducción&lt;/h1&gt;
+&lt;p&gt;Como en cualquier otro software, las variables proporcionan poder acceder a un valor cuando se solicita sin tener asignarla contínuamente.&lt;br /&gt;
+Lo más importante aquí es saber que FreeSwitch carga las variables en memoria, por tanto, cuando accedes a esta variable lo estás haciendo en la memoria del sistema.&lt;/p&gt;
+
+&lt;h2 id=&quot;tipos&quot;&gt;Tipos&lt;/h2&gt;
+&lt;p&gt;Básicamente son dos tipos de variables: variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GLOBAL&lt;/code&gt; (Global variables) y variable de &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CANAL&lt;/code&gt; (Channel variable).
+En el primer caso &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GLOBAL&lt;/code&gt;, la variable es accesible para todos lo canales mientras en el segundo caso &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CANAL&lt;/code&gt; la variable es solo accesible en el contexto del canal.&lt;/p&gt;
+
+&lt;p&gt;Por ejemplo, una variable global sería la IP que usa el sistema &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;local_ip_v4&lt;/code&gt;, siempre vamos a poder acceder a ella en cualquier parte.&lt;br /&gt;
+Como ejemplo de una variable de canal sería por ejemplo una asignada para el número de destino al que se está llamando &lt;em&gt;destination_number&lt;/em&gt;, asignada para manejar la llamada en el &lt;em&gt;dialplan&lt;/em&gt;. Esta variable será reasignada en cada llamada, en cada canal, porque no va a obtener un valor fijo, eso lo tenemos claro en este punto.&lt;/p&gt;
+
+&lt;h2 id=&quot;acceder-a-las-variables&quot;&gt;Acceder a las variables&lt;/h2&gt;
+&lt;p&gt;Se accedes a las variables con formato &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${variable}&lt;/code&gt;. Como en el ejemplo anterior, vamos a comprobar nuestra variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;local_ip_v4&lt;/code&gt;, podemos hacerlo de dos formas:&lt;br /&gt;
+Desde la consola de FreeSwitch con el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eval&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${variable}&lt;/code&gt; (ejecutando fs_cli):&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;freeswitch@debian&amp;gt; eval ${local_ip_v4}
+192.168.0.15
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;O desde la misma shell, con &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fs_cli -x&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eval ${variable}&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@debian:/home/oliva# fs_cli -x 'eval ${local_ip_v4}'
+192.168.0.15
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;cite&gt;¡Ojo! Debes usar las comillas simple y no doble para que no sea interpretado por bash&lt;/cite&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;asignación-y-re-asignación&quot;&gt;Asignación y re-asignación&lt;/h2&gt;
+&lt;p&gt;En los archivos de configuración será referidas con un doble $ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$${variable}&lt;/code&gt;, sólo en los archivos de configuración para &lt;em&gt;sólo variables globales&lt;/em&gt;.&lt;br /&gt;
+Para el resto como hemos visto anteriormente nos referimos con un sólo $ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${variable}&lt;/code&gt;. Podemos referirnos tanto a variables globales como variables de canal.&lt;br /&gt;
+Entonces…¿Es posible re-asignar una variable global? Rotundamente sí.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;freeswitch@debian&amp;gt; global_getvar local_ip_v4
+192.168.0.15
+freeswitch@debian&amp;gt; global_setvar local_ip_v4=1.1.1.1
++OK
+freeswitch@debian&amp;gt; global_getvar local_ip_v4
+1.1.1.1
+freeswitch@debian&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Esta variable global &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;local_ip_v4&lt;/code&gt; se encuentra definida en el archivo vars.xml (en realidad no es así del todo pero luego se aclara). Le hemos dicho a FreeSwitch que su IP local es 1.1.1.1. Las consecuencias son catastróficas, nuestro teléfono ha dejado de registrar, en el anterior capítulo tienes como comprobar o simplemente el teléfono te va a devolver un error 403 - Forbidden.&lt;/p&gt;
+
+&lt;p&gt;Algo interesante, si hacemos &lt;em&gt;reloadxml&lt;/em&gt; recargará la configuración de FreeSwitch pero la variable seguirá definida como 1.1.1.1. El comando debería recargar los archivos XML como el &lt;em&gt;dialplan&lt;/em&gt;, además de &lt;em&gt;vars.xml&lt;/em&gt; pero no es así en caso de variables &lt;em&gt;pre-processor&lt;/em&gt;. Vamos a comprobar varias cosas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Abrimos el archivo &lt;em&gt;/etc/freeswitch/vars.xml&lt;/em&gt; -&amp;gt; Aquí vamos a ver las variables como PRE-PROCCESS, un ejemplo que vas a recordar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;X-PRE-PROCESS&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cmd=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;set&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;default_password=1234&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Visualiza el contenido de &lt;em&gt;/var/log/freeswitch/freeswitch.xml.fsxml&lt;/em&gt;. Este archivo son todas las variables que se han cargado al iniciar FreeSwitch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;global_setvar&lt;/code&gt; ha modificado una variable “pre-cargada” por el sistema que no puede ser recargada. Ahora solo tenemos dos caminos para que nuestro FreeSwitch funcione correctamente de nuevo permitiendo registrar los dispositivos: O bien volvemos a lanzar el comando con el parámetro correcto o bien reiniciamos el servicio. Debes de tener en cuenta que en producción el reinicio va a provocar la &lt;strong&gt;caída de todas las llamadas&lt;/strong&gt; en curso. Estamos en un desarrollo así que….alegría.&lt;/p&gt;
+
+&lt;p&gt;&lt;cite&gt;–La consola de FreeSwitch estará devolviendo un warning por este problema que hemos provocado–&lt;/cite&gt;&lt;/p&gt;
+
+&lt;p&gt;Ahora vamos a darle una vuelta más. En el archivo &lt;em&gt;vars.xml&lt;/em&gt; no aparece definida&lt;/p&gt;
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;X-PRE-PROCESS&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;cmd=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;set&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;local_ip_v4=192.168.0.15&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Si en algún momento te paraste a leer, habrás visto que indica expresamente que una serie de variables, entre ellas &lt;em&gt;local_ip_v4&lt;/em&gt; han sido calculadas por FreeSwitch dinámicamente y definidas como variables globales.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Repite los pasos anteriormente pero en vez de cambiar la variable &lt;em&gt;local_ip_v4&lt;/em&gt;, cambia la variable &lt;em&gt;default_password&lt;/em&gt;.
+Luego recarga configuración XML &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reloadxml&lt;/code&gt; y comprueba de nuevo el valor de la variable.
+¡Sí! En este caso la variable ha sido cargada nuevamente y ahora devuelve nuevamente &lt;em&gt;1234&lt;/em&gt; sin tener que recargar FreeSwitch&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Puede que la pregunta que te ronda ahora es para qué tanto follón y lío con esto de las variables. Bueno, según como vayas a montar tu sistema, vas a necesitar conocer si es necesario definir ciertas variables del sistema como la ip local. Puedes enrutar tanto por IP o puede que tu IP sea dinámica y vayas a registrar tus terminales mediante DNS y así no es necesario asignar un IP fija local.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;En fin, por una parte me va a obligar a indicar una IP fija en mi DNS en la interfaz local de mi FreeSwitch o bien por otra a configurar un nombre de dominio y tener la libertad de tener una ip dinámica. Cada cual tiene sus ventajas e inconvenientes y cuando se trata de interfaz local pues no es verdaderamente útil que digamos pero piensa en lo siguiente:&lt;/p&gt;
+
+&lt;p&gt;Estamos en un entorno local de desarrollo pero la idea es tener a usuarios en cualquier parte del mundo. ¿Es más factible que registren contra una IP pública o contra un dominio típico como voip.empresa.com&lt;/p&gt;
+
+&lt;p&gt;Esto abre un mundo de posibilidades ya que tener un nuevo cliente en cualquier parte y si tuvieras algún problema con la IP no te va a importar ya que no necesitarás re-configurar los terminales. También ahorramos un pequeño coste por pagar IP fija en algunos casos.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente post habrá un poco de teoría sobre FreeSwitch para entender el funcionamiento un poquito mejor.&lt;/p&gt;
+
+&lt;p&gt;¡Nos vemos!&lt;/p&gt;</content><author><name>Yoko</name></author><category term="FreeSwitch" /><category term="FreeSwitch" /><category term="PBX" /><category term="VoIP" /><category term="SIP" /><category term="Variables" /><summary type="html">Introducción Como en cualquier otro software, las variables proporcionan poder acceder a un valor cuando se solicita sin tener asignarla contínuamente. Lo más importante aquí es saber que FreeSwitch carga las variables en memoria, por tanto, cuando accedes a esta variable lo estás haciendo en la memoria del sistema.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/freeswitch/freeswitch.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/freeswitch/freeswitch.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FreeSwitch: Instalación sobre Debian 10 Buster</title><link href="https://noobchamp.github.io/freeswitch/Freeswitch-produccion-pbx/" rel="alternate" type="text/html" title="FreeSwitch: Instalación sobre Debian 10 Buster" /><published>2021-04-26T18:00:40+00:00</published><updated>2021-04-26T18:00:40+00:00</updated><id>https://noobchamp.github.io/freeswitch/Freeswitch-produccion-pbx</id><content type="html" xml:base="https://noobchamp.github.io/freeswitch/Freeswitch-produccion-pbx/">&lt;h1 id=&quot;introducción&quot;&gt;Introducción&lt;/h1&gt;
+
+&lt;p&gt;FreeSwitch es una plataforma de telefonía de código abierto.&lt;br /&gt;
+Es realmente flexible gracias a su buen rendimiento. Se puede usar como &lt;abbr title=&quot;Private Branch Exchange&quot;&gt;PBX&lt;/abbr&gt;, como un soft-switch. 
+Podríamos usarla para distintos propósitos como por ejemplo un &lt;abbr title=&quot;Session Border Controller&quot;&gt;SBC&lt;/abbr&gt; entre otras centralitas físicas o virtuales como Alcatel, Panasonic, Avaya, Asterisk, etc. Podríamos instalar una GUI para usar como &lt;abbr title=&quot;Private Branch Exchange&quot;&gt;PBX&lt;/abbr&gt;. Podríamos usarlo para control de facturación entre distintos clientes y proveedores, es decir, balancear nuestras llamadas por coste de todos nuestros clientes además de muchas más cosas.&lt;/p&gt;
+
+&lt;p&gt;FreeSwitch es muy versátil. Es posible instalar FreeSwitch desde una Raspberry hasta un buen servidor físico, va a depender de la carga. Lo mejor de todo es que es &lt;em&gt;escalable&lt;/em&gt;, por lo que podríamos ampliar en cualquier momento.&lt;/p&gt;
+
+&lt;h1 id=&quot;objetivos-del-aprendizaje&quot;&gt;Objetivos del aprendizaje&lt;/h1&gt;
+&lt;p&gt;No vamos a entrar en profundidad en definiciones o aspectos técnicos sobre VoIP. En &lt;em&gt;internet&lt;/em&gt; se puede encontrar numerosos sitios donde explican conceptos de telefonía como:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Protocolo SIP&lt;/li&gt;
+  &lt;li&gt;Códecs&lt;/li&gt;
+  &lt;li&gt;Wireshark&lt;/li&gt;
+  &lt;li&gt;TCPdump&lt;/li&gt;
+  &lt;li&gt;Aplicaciones de &lt;abbr title=&quot;Private Branch Exchange&quot;&gt;PBX&lt;/abbr&gt;&lt;/li&gt;
+  &lt;li&gt;Softphone&lt;/li&gt;
+  &lt;li&gt;LUA&lt;/li&gt;
+  &lt;li&gt;XML&lt;/li&gt;
+  &lt;li&gt;Otras cosas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vamos a instalar FreeSwitch y empezar a “trastearlo” todo para entender como funciona y que ventajas nos puede ofrecer. Así pues…¡Vamos al lío!&lt;/p&gt;
+
+&lt;h1 id=&quot;instalación-de-freeswitch&quot;&gt;Instalación de FreeSwitch&lt;/h1&gt;
+&lt;p&gt;En nuestro ejemplo vamos a instalar FreeSwitch sobre &lt;a href=&quot;https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.9.0-amd64-netinst.iso&quot; class=&quot;link&quot;&gt;Debian 10 Buster&lt;/a&gt;, de forma local a través de una máquina virtual en red interna. 
+Ya te voy avisando que si usas arquitectura i386 no te va a funcionar. Tienes el enlace a la versión 10.9 amd64.&lt;/p&gt;
+&lt;h5 id=&quot;máquina-virtual&quot;&gt;Máquina virtual:&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;4Gb Ram&lt;/li&gt;
+  &lt;li&gt;16Gb Almacenamiento&lt;/li&gt;
+  &lt;li&gt;2 Procesadores&lt;/li&gt;
+  &lt;li&gt;Adaptador puente &lt;em&gt;IP 192.168.0.15&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Sin escritorio&lt;/li&gt;
+  &lt;li&gt;SSH Server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Con eso vamos a tirar de momento. Más adelante vamos a ver como podemos mover a producción este servidor local. Una vez iniciado Debian 10 actualizamos el sistemas, agregamos el repositorio e instalamos FreeSwitch.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; gnupg2 wget lsb-release
+wget &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; - https://files.freeswitch.org/repo/deb/debian-release/fsstretch-archive-keyring.asc | apt-key add -
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb http://files.freeswitch.org/repo/deb/debian-release/ &lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-sc&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; main&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/apt/sources.list.d/freeswitch.list
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;deb-src http://files.freeswitch.org/repo/deb/debian-release/ &lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-sc&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; main&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; /etc/apt/sources.list.d/freeswitch.list
+apt-get update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; freeswitch-meta-all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Luego levantamos FreeSwitch y ya que estamos habilitamos el servicio en el arranque y comprobamos que funciona correctamente:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl start freeswitch
+systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;freeswitch.service
+fs_cli
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;cite&gt;Evidentemente tenemos que ser root o lanzar como “sudo”&lt;/cite&gt;&lt;/p&gt;
+
+&lt;p&gt;Si todo es correcto veremos lo siguiente:
+&lt;img src=&quot;/images/freeswitch/fs-cli.webp&quot; alt=&quot;center-aligned-image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;configuración-y-primera-llamada&quot;&gt;Configuración y primera llamada&lt;/h2&gt;
+&lt;p&gt;Ya es posible realizar nuestra primera llamada. Es necesario tener instalado algún dispositivo SIP.&lt;br /&gt;
+Yo voy a usar Zoiper, además en su versión 3, que me gusta más que la 5 de momento. Os dejo un enlace por si queréis descargar la misma versión &lt;a href=&quot;https://www.zoiper.com/en/voip-softphone/download/zoiper3/for/windows&quot; class=&quot;link&quot;&gt;ZOIPER&lt;/a&gt;.&lt;br /&gt;
+Primero vamos a comprobar que en FreeSwitch no existe ningún registro:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;freeswitch@debian&amp;gt; show registrations
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;cite&gt;Devolverá 0 total&lt;/cite&gt;&lt;/p&gt;
+
+&lt;p&gt;Posteriormente vamos a registrar nuestra primera extensión “1000”. Así que tenemos que crear en Zoiper una &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nueva cuenta SIP&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Usuario:&lt;/em&gt; 1000&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Contraseña:&lt;/em&gt; 1234&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Domain:&lt;/em&gt; 192.168.0.15 (tendrás que poner la IP asignada a tu Sistema)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Si tienes éxito podemos volver a lanzar el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;show registrations&lt;/code&gt; y veremos que nos muestra datos de nuestra extensión recién registrada además de &lt;em&gt;1 total.&lt;/em&gt;
+Ahora podrías añadir por ejemplo otra extensión como la 1001 o simplemente podemos comprobar que todo funciona llamando a algunas extensiones que FreeSwitch ha creado y enrutado de manera predeterminada.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5000&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;IVR&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4000&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Voicemail&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9196&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Eco test&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9195&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Eco test con 5 segundos de retardo&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9197&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Un pitido terrible&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9198&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Tetris (wav)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9664&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Música de espera (MOH)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Hay muchos más números pero de momento si todo esto funciona correctamente podemos estar satisfechos.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusión&quot;&gt;Conclusión&lt;/h2&gt;
+&lt;p&gt;Bueno, pues aunque parezca que ya que podemos llamar tenemos un 70% del trabajo realizado, creo que con esto no llegamos ni la 1%.&lt;br /&gt;
+La configuración es realmente compleja y vamos a ir aprendiendo como usarlo. 
+En un principio no vamos a instalar ningún programa adicional para manejar la configuración sino que todo lo vamos a realizar a mano. Ya sabes, a base de golpes se aprende.&lt;/p&gt;
+
+&lt;p&gt;Si lo que quieres es tener una &lt;abbr title=&quot;Private Branch Exchange&quot;&gt;PBX&lt;/abbr&gt; simple pequeña te recomiendo que busques FreePBX u otro tipo de solución. Para dar servicio de telefonía a un pequeño negocio no necesitas FreeSwitch, sino otro tipo de &lt;abbr title=&quot;Private Branch Exchange&quot;&gt;PBX&lt;/abbr&gt; con una buena interfaz, fácil de usar y más completa en lo referente a servicios para el usuario.&lt;/p&gt;
+
+&lt;p&gt;Nosotros más adelante si vamos a conectarle otra &lt;abbr title=&quot;Private Branch Exchange&quot;&gt;PBX&lt;/abbr&gt; como FreePBX, vamos a crear proveedores, posiblemente instalemos Pyfreebilling, instalaremos un servidor de trazas como &lt;em&gt;Homer&lt;/em&gt; y realizar test de carga y comparativas.&lt;/p&gt;
+
+&lt;p&gt;¡Nos vemos en el siguiente post!&lt;/p&gt;</content><author><name>Yoko</name></author><category term="FreeSwitch" /><category term="FreeSwitch" /><category term="PBX" /><category term="VoIP" /><category term="SIP" /><summary type="html">Introducción</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/freeswitch/freeswitch.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/freeswitch/freeswitch.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Prompt: Personaliza el prompt de tu Linux</title><link href="https://noobchamp.github.io/linux/prompt-linux-personalizado/" rel="alternate" type="text/html" title="Prompt: Personaliza el prompt de tu Linux" /><published>2021-04-22T18:06:40+00:00</published><updated>2021-04-22T18:06:40+00:00</updated><id>https://noobchamp.github.io/linux/prompt-linux-personalizado</id><content type="html" xml:base="https://noobchamp.github.io/linux/prompt-linux-personalizado/">&lt;h1 id=&quot;prompt&quot;&gt;Prompt&lt;/h1&gt;
+&lt;p&gt;A menudo tenemos varios terminales abiertos y la Shell de Linux suele ser siempre la misma por norma general.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;username@hostname$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Varía un poco según la distro o según si el usuario que usamos es &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;root&lt;/code&gt; u otro distinto.&lt;/p&gt;
+
+&lt;h2 id=&quot;cuál-es-el-propósito&quot;&gt;¿Cuál es el propósito&lt;/h2&gt;
+&lt;p&gt;En muchas ocasiones nos movemos contínuamente por ejemplo de servidores de producción a desarrollo o simplemente tenemos varios terminales en los que solemos trabajar a lo largo del día.&lt;br /&gt;
+Durante algunos años estuve trabajando como administrador de sistemas realizando contínuos despliegues. Llega el momento en el que te confundes a la hora de reiniciar un servicio, realizar copias y consultas varias entre el servidor de producción y el servidor pre-producción puesto que suelen ser idénticos y la información se suele desplazar del segundo al primero una vez se ha verificado todo.&lt;/p&gt;
+
+&lt;h5 id=&quot;a-nadie-le-ha-ocurrido-reiniciar-un-proceso-en-producción-creyendo-que-se-trataba-del-servidor-de-pre-producción-o-desarrollo&quot;&gt;&lt;em&gt;¿A nadie le ha ocurrido reiniciar un proceso en producción creyendo que se trataba del servidor de pre-producción o desarrollo?&lt;/em&gt;&lt;/h5&gt;
+&lt;p&gt;A mí unas cuantas, así que empecé a personalizar el prompt para evitar este tipo de errores.&lt;br /&gt;
+Como idea, puedes incluirlo en un script para cuando recibes acceso a un servidor. A lo largo del tiempo verás que es rentable ya que siempre vas a realizar tareas iniciales como esta además de otras como configurar una clave ssh o hacer un diagnóstico inicial del sistema.&lt;/p&gt;
+
+&lt;h2 id=&quot;vamos-al-grano&quot;&gt;Vamos al grano&lt;/h2&gt;
+&lt;p&gt;Hay decenas de páginas web para hacer esta tarea más sencilla. Si quieres seguir mi ejemplo entra en &lt;a href=&quot;http://bashrcgenerator.com&quot;&gt;bashrcgenerator&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/bashrcgenerator.webp&quot; alt=&quot;center-aligned-image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;personalizando-el-prompt-de-debian&quot;&gt;Personalizando el prompt de Debian&lt;/h2&gt;
+&lt;p&gt;Ahora tienes que copiar el resultado de la casilla 4.&lt;br /&gt;
+Como puedes observar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*?*&lt;/code&gt; no nos dice nada, eso vamos a cambiarlo por &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PRODUCCIÓN&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DESARROLLO&lt;/code&gt; o la etiqueta que quieras poner para identificarlo en todo momento.
+En la Shell, edita el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; de tu home:&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;cite&gt;Si no sabes usar el editor de VI, usa nano o el que prefieras&lt;/cite&gt;
+Pega el código copiado anteriormente y sustituye &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt; como indicaba anteriormente. 
+Tras esto tienes que salir y volver a entrar o simplemente usa el comando:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/images/bashrc.webp&quot; alt=&quot;right-aligned-image&quot; class=&quot;align-right&quot; /&gt;
+¡Espero que te sirva de algo!
+Saludos.&lt;/p&gt;</content><author><name>Pancho</name></author><category term="Linux" /><category term="Linux" /><category term="Prompt" /><category term="Debian" /><summary type="html">Prompt A menudo tenemos varios terminales abiertos y la Shell de Linux suele ser siempre la misma por norma general. username@hostname$ Varía un poco según la distro o según si el usuario que usamos es root u otro distinto.</summary></entry><entry><title type="html">Jekyll: Publicar tu blog gratis en Github e integración contínua (CI)</title><link href="https://noobchamp.github.io/jekyll/Jekyll-publicar-gratis-ci/" rel="alternate" type="text/html" title="Jekyll: Publicar tu blog gratis en Github e integración contínua (CI)" /><published>2021-04-09T10:00:40+00:00</published><updated>2021-04-09T10:00:40+00:00</updated><id>https://noobchamp.github.io/jekyll/Jekyll-publicar-gratis-ci</id><content type="html" xml:base="https://noobchamp.github.io/jekyll/Jekyll-publicar-gratis-ci/">&lt;h1 id=&quot;introducción&quot;&gt;Introducción&lt;/h1&gt;
+&lt;p&gt;En el &lt;a href=&quot;/jekyll/crear-blog-jekyll-desde-plantilla/&quot; class=&quot;link&quot;&gt;artículo anterior&lt;/a&gt; vimos como crear una un blog haciendo un fork en el repositorio del creador.  Además iniciamos el sitio web en un entorno local e hicimos algunos ajustes, además creamos un nuevo post.&lt;br /&gt;
+Veremos que cuando creemos el sitio, cada vez que creemos un nuevo post no se va a actualizar en Github. Para ello contamos con un script que va a reconstruir el sitio para cada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt;que lancemos.&lt;/p&gt;
+
+&lt;h2 id=&quot;requisitos&quot;&gt;Requisitos&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tener cuenta en Github&lt;/li&gt;
+  &lt;li&gt;Conocimientos básicos de Git&lt;/li&gt;
+  &lt;li&gt;Un poco de ilusión&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pasos-previos&quot;&gt;Pasos previos.&lt;/h2&gt;
+&lt;p&gt;Dentro la raíz de nuestro repositorio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;agusmakmun.github.io&lt;/code&gt; (en nuestro caso puesto que creamos la plantilla a partir de este repositorio) vamos a realizar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push&lt;/code&gt;.&lt;br /&gt;
+Comprobamos que en nuestro proyecto LOCAL, en el archivo _config.yml situado en la raíz tiene la &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;URL&lt;/code&gt; configurada como &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;.&lt;br /&gt;
+Ahora vamos a actualizar nuestro repositorio, simplemente en el terminal ejecutamos los comandos:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;primer commint&quot;&lt;/span&gt;  
+git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Y comprobamos en nuestra cuenta que los cambios que hemos realizado en nuestro proyecto local como nuestro primer post &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;¡Adiós al Covid!&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;crear-una-nueva-rama-branch&quot;&gt;Crear una nueva rama (branch)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/images/new-branch.webp&quot; alt=&quot;right-aligned-image&quot; class=&quot;align-right&quot; /&gt;
+En la pestaña “Master” hacemos click y ponemos en el cuadro de diálogo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;, luego a “crear rama a partir de Master”. Esta rama es la que vamos a indicar a Github que vamos a publicar.&lt;br /&gt;
+Así es, no vas a publicar rama principal sino una rama creada a partir de la “Master” y en los siguientes pasos vamos a ver como actualizarla cada vez que realizamos un push.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuración&quot;&gt;Configuración&lt;/h2&gt;
+&lt;p&gt;Ahora vamos a la &lt;em&gt;configuración del proyecto&lt;/em&gt; y lo renombramos cono “usuario.github.io”, es decir, cambiamos el nombre de “agusmakmun” a tu nombre de usuario.&lt;/p&gt;
+
+&lt;h2 id=&quot;envioroments&quot;&gt;Envioroments&lt;/h2&gt;
+&lt;p&gt;Ve a la pestaña “envioroments” y crea uno nuevo. Puedes ponerle de nombre “gh-page”&lt;/p&gt;
+
+&lt;h2 id=&quot;pages&quot;&gt;Pages&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/images/pages.webp&quot; alt=&quot;right-aligned-image&quot; class=&quot;align-left&quot; /&gt;
+Por último nos vamos a la pestaña “pages” y configuramos la rama a usar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;test&quot;&gt;Test&lt;/h2&gt;
+&lt;p&gt;En estos momentos tu sitio web debe estar actualizado y deberías poder acceder a la URL &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Éxito&lt;/em&gt; -&amp;gt; Puedes ver blog creado con Jekyll publicado en internet al alcance de cualquier interesado.
+&lt;em&gt;Fracaso&lt;/em&gt; -&amp;gt; Puede que no hayas realizado un paso bien. Repito los pasos.
+&lt;em&gt;Ni blanco ni negro&lt;/em&gt; -&amp;gt; Tu sitio web se visualiza pero no tiene formato [CSS]. En este caso comprueba que en el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; no tienes configurado la opción &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;baseurl&lt;/code&gt;. A no ser que tu proyecto esté en un subdirectorio como “/blog”.&lt;br /&gt;
+*[CSS]: Cascading Style Sheets&lt;/p&gt;
+
+&lt;h1 id=&quot;integración-contínua&quot;&gt;Integración contínua&lt;/h1&gt;
+&lt;p&gt;En estos momentos si creamos un nuevo post en nuestro proyecto local y hacemos “push” para actualizar nuestro repositorio. Vamos a comprobar que nuestro sitio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username.github.io&lt;/code&gt; no se actualiza.&lt;/p&gt;
+
+&lt;p&gt;Tienes que crear una carpeta dentro de tu proyecto llamada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.github&lt;/code&gt; –&lt;cite&gt;con el “.” punto delante&lt;/cite&gt;. Dentro de ella creamos otra carpeta llamada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflos&lt;/code&gt;y dentro de esta carpeta creamos el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;on:
+  push:
+    branches:
+      - master
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Checkout
+        uses: actions/checkout@v1
+      - name: Bundler Cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: $&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;runner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;-gems-$&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;hashFiles&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'**/Gemfile.lock'&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+          restore-keys: |
+            $&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;runner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;-gems-
+      - name: Build &amp;amp; Deploy to GitHub Pages
+        uses: joshlarsen/jekyll4-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: $&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;secrets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+          GITHUB_REPOSITORY: $&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;secrets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GITHUB_REPOSITORY&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+          GITHUB_ACTOR: $&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;secrets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GITHUB_ACTOR&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;   
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Al realizar nuevamente los comandos git y subir el archivo podremos ver los cambios en la pestaña “actions” de nuestro proyecto.&lt;br /&gt;
+Y no me voy a enrollar más sobre como funciona el archivo, si estás interesado házmelo saber mediante comentarios y poder subir otro artículo más dedicado a la integración contínua.&lt;/p&gt;
+
+&lt;p&gt;También podéis dirigiros al repositorio original &lt;a href=&quot;https://github.com/joshlarsen/jekyll4-deploy-gh-pages/blob/master/readme.md&quot; class=&quot;link&quot;&gt;joshlarsen&lt;/a&gt; para leer la documentación completa.&lt;/p&gt;
+
+&lt;p&gt;Espero que te haya servido de ayuda.&lt;/p&gt;</content><author><name>Bowie</name></author><category term="Jekyll" /><category term="Jekyll" /><category term="Ruby" /><category term="Github" /><summary type="html">Introducción En el artículo anterior vimos como crear una un blog haciendo un fork en el repositorio del creador. Además iniciamos el sitio web en un entorno local e hicimos algunos ajustes, además creamos un nuevo post. Veremos que cuando creemos el sitio, cada vez que creemos un nuevo post no se va a actualizar en Github. Para ello contamos con un script que va a reconstruir el sitio para cada pushque lancemos.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/jekyll-logo.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/jekyll-logo.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Jekyll: Crea tu blog Jekyll desde una plantilla</title><link href="https://noobchamp.github.io/jekyll/crear-blog-jekyll-desde-plantilla/" rel="alternate" type="text/html" title="Jekyll: Crea tu blog Jekyll desde una plantilla" /><published>2021-04-09T08:00:40+00:00</published><updated>2021-04-09T08:00:40+00:00</updated><id>https://noobchamp.github.io/jekyll/crear-blog-jekyll-desde-plantilla</id><content type="html" xml:base="https://noobchamp.github.io/jekyll/crear-blog-jekyll-desde-plantilla/">&lt;h1 id=&quot;introducción&quot;&gt;Introducción&lt;/h1&gt;
+&lt;p&gt;En un &lt;a href=&quot;/jekyll/crear-un-sitio-web-estatico-gratis-jekyll/&quot; class=&quot;link&quot;&gt;artículo anterior&lt;/a&gt; hemos creado nuestro primer blog/sitio.&lt;br /&gt;
+Ahora vamos a crear un blog partiendo desde una plantilla, por tanto como otros CMS nos va a proporcionar la mayoría del trabajo en cuanto a:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Estilos&lt;/li&gt;
+  &lt;li&gt;Rutas&lt;/li&gt;
+  &lt;li&gt;Configuración&lt;/li&gt;
+  &lt;li&gt;SEO&lt;/li&gt;
+  &lt;li&gt;Javascript&lt;/li&gt;
+  &lt;li&gt;Tags&lt;/li&gt;
+  &lt;li&gt;Y un largo etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requisitos-previos&quot;&gt;Requisitos previos&lt;/h2&gt;
+&lt;p&gt;Esto son los requisitos previos impuestos para este artículo, ya que puedes hacerlo de varias maneras. Yo voy a realizar un fork sobre el repositorio de Github de la plantilla que me interesa. Podrías copiar directamente el directorio pero vas a necesitar al menos estos requisitos para el siguiente paso &lt;em&gt;publicarlo gratuitamente&lt;/em&gt; en internet.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tener cuenta en Github&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://git-scm.com/downloads&quot; class=&quot;link&quot;&gt;GIT&lt;/a&gt; instalado.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Si no estás familiarizado con git no es mayor problema, solo vamos a hacer &lt;em&gt;git clone&lt;/em&gt;.&lt;br /&gt;
+He tomado de ejemplo &lt;a href=&quot;https://github.com/agusmakmun/agusmakmun.github.io&quot; class=&quot;link&quot;&gt;Agus Makmun&lt;/a&gt;, es una plantilla sencilla y fácil de entender para un inicio. 
+Si quieres seguir los mismos pasos pincha en el enlace.&lt;/p&gt;
+
+&lt;h3 id=&quot;realizar-un-fork&quot;&gt;Realizar un fork&lt;/h3&gt;
+&lt;p&gt;Cuando estemos en el repositorio de la plantilla que hayas elegido, en la esquina superior derecha, bajo tu foto de perfil de Github verás lo siguiente:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/fork.webp&quot; alt=&quot;center-aligned-image&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Presiona sobre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FORK&lt;/code&gt; y el repositorio se copiará automáticamente como un repositorio tuyo.&lt;/p&gt;
+
+&lt;h2 id=&quot;traer-el-proyecto-a-local&quot;&gt;Traer el proyecto a local&lt;/h2&gt;
+&lt;p&gt;Ahora si vamos a necesitar git. Abre una nueva consola y situate donde quieras clonar los archivos a tu PC. Ejecuta:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/username/agusmakmun.github.io.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Tras esto, nos desplazamos dentro del proyecto &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;agusmakmun.github.io.git&lt;/code&gt; y siguiendo las instrucciones del creador tecleamos en la consola:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle update
+jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Abre en tu navegador &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:4000&lt;/code&gt;&lt;br /&gt;
+¡Y ya está!, ya tenemos todo lo que hicimos en el &lt;a href=&quot;/jekyll/crear-un-sitio-web-estatico-gratis-jekyll/&quot; class=&quot;link&quot;&gt;artículo anterior&lt;/a&gt; pero con las ventajas de una plantilla.&lt;/p&gt;
+
+&lt;p&gt;En el siguiente artículo vamos a publicar gratis nuestro proyecto y además vamos a realizar una integración contínua.&lt;/p&gt;
+
+&lt;h4 id=&quot;te-vienes&quot;&gt;¿Te vienes?&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;/jekyll/Jekyll-publicar-gratis-ci/&quot; class=&quot;btn btn--primary btn--large&quot;&gt;Voy para alla!&lt;/a&gt;&lt;/p&gt;</content><author><name>Yoko</name></author><category term="Jekyll" /><category term="Jekyll" /><category term="Ruby" /><category term="Github" /><summary type="html">Introducción En un artículo anterior hemos creado nuestro primer blog/sitio. Ahora vamos a crear un blog partiendo desde una plantilla, por tanto como otros CMS nos va a proporcionar la mayoría del trabajo en cuanto a: Estilos Rutas Configuración SEO Javascript Tags Y un largo etc</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/jekyll-logo.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/jekyll-logo.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Jekyll: Crea tu web/blog en pocos minutos con Jekyll</title><link href="https://noobchamp.github.io/jekyll/crear-un-sitio-web-estatico-gratis-jekyll/" rel="alternate" type="text/html" title="Jekyll: Crea tu web/blog en pocos minutos con Jekyll" /><published>2021-04-08T17:00:40+00:00</published><updated>2021-04-08T17:00:40+00:00</updated><id>https://noobchamp.github.io/jekyll/crear-un-sitio-web-estatico-gratis-jekyll</id><content type="html" xml:base="https://noobchamp.github.io/jekyll/crear-un-sitio-web-estatico-gratis-jekyll/">&lt;h1 id=&quot;qué-es-jekyll&quot;&gt;¿Qué es Jekyll?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;#instalación&quot; class=&quot;btn btn--primary btn--small&quot;&gt;Ir al grano&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://jekyllrb.com/&quot; class=&quot;link&quot;&gt;Jekyllrb&lt;/a&gt; se define como un generador de sitios web estáticos.&lt;br /&gt;
+Principalmente se tratan de blogs o páginas webs en las que no es necesario tener una base de datos. 
+Por ejemplo, si una persona quiere una página web para su restaurante, peluquería, taller o cualquier otro negocio en la que simplemente se usa para tener una “&lt;em&gt;imagen de empresa&lt;/em&gt;” en internet. Webs en las que se publicitan servicios, precios, horarios, contacto, etc…&lt;/p&gt;
+
+&lt;p&gt;En mi caso particular (y para lo que habitualmente se usa) he construido un blog. En pocos minutos y sin necesidad de ningún tipo de inversión económica…&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GRATIS&lt;/code&gt;, la palabra favorita de cualquiera.&lt;/p&gt;
+
+&lt;p&gt;Cada post o contenido agregado por el usuario está escrito en archivos Markdown o md. El formato viene dado por plantillas &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt; y &lt;abbr title=&quot;Cascading Style Sheets&quot;&gt;CSS&lt;/abbr&gt;.&lt;br /&gt;
+Jekyll está escrito en Ruby pero prácticamente no es necesario saber nada sobre este particular lenguaje de programación. Es necesario modificar algunos parámetros de configuración pero el sistemas de plantillas de Jekyll hace que sea realmente fácil para cualquier persona incluso con un conocimiento básico de informática.&lt;/p&gt;
+
+&lt;p&gt;Por supuesto este blog está hecho con Jekyll y voy a enseñarte en pocos paso como puedes crear el tuyo.
+En mi caso, lo uso para propósito de aprendizaje y modo de documentación donde de paso otras personas puedan leer y aprender. Alguno que otro se pasará a criticarlo. Todos son bienvenidos.&lt;/p&gt;
+
+&lt;p&gt;Si quieres saber más sobre Jekyll puedes pasarte por su &lt;a href=&quot;https://jekyllrb.com/&quot; class=&quot;link&quot;&gt;página oficial&lt;/a&gt; y echar un vistazo. Esta todo en Inglés, si no estás familiarizado seguro que encuentras decenas de tutoriales por la red, en Youtube y otras plataformas en castellano.&lt;/p&gt;
+
+&lt;h1 id=&quot;por-qué-jekyll-y-no-un-cms&quot;&gt;¿Por qué Jekyll y no un CMS?&lt;/h1&gt;
+&lt;p&gt;A mi modo de ver casi nunca nada es mejor que otra cosa o al menos en este mundillo con tecnologías similares. Siempre vas a oir cosas como &lt;em&gt;este lenguaje de programación es mejor que este…. Esta plataforma es mejor que esta…&lt;/em&gt; No es mi caso.&lt;br /&gt;
+Elegí Jekyll antes que otro CMS por varias razones:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Rápida instalación y configuración.&lt;/li&gt;
+  &lt;li&gt;No es necesario manejar una base de datos.&lt;/li&gt;
+  &lt;li&gt;Estoy empezando a odiar los backends.&lt;/li&gt;
+  &lt;li&gt;Para mí, al menos ahora es novedad (aunque lleva muchos años existiendo).&lt;/li&gt;
+  &lt;li&gt;Me permite publicarlo gratis mediante &lt;a href=&quot;https://github.com/&quot; class=&quot;link&quot;&gt;GITHUB&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Decenas de plantillas gratuitas optimizadas en cuanto a SEO y texto enriquecido.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Yo te diría que al menos le des una oportunidad e investigues un poco si alguno de los puntos anteriores encajan en tu carácter.&lt;/p&gt;
+
+&lt;h1 id=&quot;instalación&quot;&gt;Instalación&lt;/h1&gt;
+&lt;h3 id=&quot;requisitos&quot;&gt;Requisitos&lt;/h3&gt;
+&lt;h5 id=&quot;tener-instalado-ruby&quot;&gt;Tener instalado Ruby&lt;/h5&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Windows:&lt;/code&gt; Descarga e instala Ruby+Devkit desde la página de descargas de &lt;a href=&quot;https://rubyinstaller.org/downloads/&quot; class=&quot;link&quot;&gt;RubyInstaller&lt;/a&gt; (instalaciones de Windows siempre es presionar &lt;em&gt;Sí&lt;/em&gt; a todo). En mi caso usé Ruby+Devkit 2.7.2-1 (x64). Al final de la instalación se abrirá un terminal en el que te pide elegir entre 3 opciones. Elige la 1 y presiona &lt;em&gt;Enter&lt;/em&gt; para finalizar la instalación.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Linux:&lt;/code&gt; &lt;a href=&quot;https://jekyllrb.com/docs/installation/ubuntu/&quot; class=&quot;link&quot;&gt;Ubuntu&lt;/a&gt; o según tu &lt;a href=&quot;https://jekyllrb.com/docs/installation/other-linux/&quot; class=&quot;link&quot;&gt;distro&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;tener-instalado-jekyll-y-bundler&quot;&gt;Tener instalado Jekyll y Bundler&lt;/h5&gt;
+&lt;p&gt;Abre un nuevo terminal y teclea (En la barra de búsqueda de Windows busca “Símbolo del sistema”):&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll bundler  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Finalmente comprueba que todo es correcto abriendo una nueva terminal y tecleando&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; jekill &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;En Windows tal vez es necesario reiniciar (ya conocemos a Windows) para aplicar cambios.&lt;/p&gt;
+
+&lt;p&gt;Si no te aclaras o necesitas más información te dejo el &lt;strong class=&quot;link&quot;&gt;&lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot;&gt;link oficial&lt;/a&gt;&lt;/strong&gt; para la instalación de &lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot; class=&quot;link&quot;&gt;Jekyll&lt;/a&gt;. Es bastante completa, clara y concisa.&lt;/p&gt;
+
+&lt;h1 id=&quot;crear-el-sitio&quot;&gt;Crear el sitio&lt;/h1&gt;
+&lt;p&gt;En este momento ya disponemos de lo necesario para crear nuestro primer blog/sitio web.&lt;br /&gt;
+Para los siguientes pasos puedes usar editor de código (A mi en particular me gusta&lt;a href=&quot;https://code.visualstudio.com/download&quot;&gt; Visual Code Studio&lt;/a&gt;){:.link} o la misma terminal de Windows. 
+Para el ejemplo vamos a iniciar un nuevo terminal de windows, por defecto se sitúa en el directorio del usuario actual “C:\Users\Usuario&amp;gt;” y tecleamos:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new nombre-sitio
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;cite&gt;nombre-sitio o lo que quieras llamarle (blog, miblog, misitio….)&lt;/cite&gt;&lt;/p&gt;
+
+&lt;p&gt;Se va a crear el sistema de archivos correspondiente y tenemos que desplazarnos a ese directorio:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;nombre-sitio
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;levantar-el-servicio-en-local&quot;&gt;Levantar el servicio en local&lt;/h5&gt;
+&lt;p&gt;Ahora simplemente vamos a arrancar un servidor local para visualizar nuestro primer sitio con Jekyll&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Te responderá con algo como:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Server address: http://127.0.0.1:4000&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Pinchamos sobre el enlace o abrimos nuestro navegador con al url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:4000&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;listo-ya-tienes-creado-tu-sitio&quot;&gt;¡Listo!, ya tienes creado tu sitio&lt;/h3&gt;
+
+&lt;figure class=&quot;align-center&quot;&gt;
+  &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;/images/new-site.webp&quot; alt=&quot;Jekyll&quot; /&gt;&lt;/a&gt;
+  &lt;figcaption&gt;127.0.0.1:4000&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h1 id=&quot;primer-post-y-configuración-inicial&quot;&gt;Primer post y configuración inicial&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;/images/tree-directory-jekyll.webp&quot; alt=&quot;right-aligned-image&quot; class=&quot;align-right&quot; /&gt;
+En ese punto ya tenemos corriendo el servidor en local, con un primer post de ejemplo. 
+El árbol de directorio debe ser similar al de la imagen de la derecha.&lt;br /&gt;
+En principio vamos a fijarnos en el directorio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_post&lt;/code&gt;, el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; y el archivo &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;about.markdown&lt;/code&gt;. Estos dos últimos están ubicados en la raíz del proyecto.&lt;/p&gt;
+
+&lt;h1 id=&quot;_post&quot;&gt;_post&lt;/h1&gt;
+&lt;p&gt;En este directorio se almacenan los post a publicar. Hay que seguir una sintáxis ordenada, en cada nuevo post será guardado con el formato:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;formato: AAAA-mm-dd-nombre-articulo.markdown
+ejemplo: 2021-12-31-pandemia-covid-19-erradicada.markdown
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Si compruebas el archivo de ejemplo creado &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2021-04-08-welcome-to-jekyll.markdown&lt;/code&gt; podrás ver que comienza con la siguiente cabecera:&lt;/p&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Welcome&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Jekyll!&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;s&quot;&gt;2021-04-08 14:18:40 +0200&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll update&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Debes respetar los 3 guiones al inicio y al final. Esta cabecera te puede guiar como plantilla, añade tu título, fecha de creación, categoría(s) y escribe el cuerpo del artículo o rellena con un poco de texto. Guarda los cambios y vuelve a tu página &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;localhost&lt;/a&gt; (¡Puedes hacer click en este enlace!).&lt;/p&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;¡Adiós&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;al&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Covid!&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;s&quot;&gt;2020-12-31 00:00:00 +0200&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;categories&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Covid&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Al fin!!&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;El COVID-19 es historia.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;figcaption&gt;Yo he escrito este artículo. Haz el tuyo propio o copia este código y visualiza los cambios en tu entorno.&lt;/figcaption&gt;
+
+&lt;p&gt;Cuidado si al guardar los cambios o relanzar el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; nos devuelve algún error, por ejemplo, si la fecha es posterior a la actual.&lt;/p&gt;
+
+&lt;h1 id=&quot;_configyml&quot;&gt;_config.yml&lt;/h1&gt;
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Your awesome title&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-email@example.com&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;&amp;gt;-&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# this means to ignore newlines until &quot;baseurl:&quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;Write an awesome description for your new site here. You can edit this&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;line in _config.yml. It will appear in your document head meta (for&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;Google search results) and in your feed.xml site description.&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the subpath of your site, e.g. /blog&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the base hostname &amp;amp; protocol for your site, e.g. http://example.com&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;twitter_username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyllrb&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;github_username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Build settings&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;minima&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-feed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Esta parte no es un poema….no es muy difícil entender, por el momento puedes cambiar el título de tu sitio, configurar tu email, hacer una descripción y agregar si quieres tu usuario de Twitter y Github (si quieres).&lt;br /&gt;
+Al tratarse de una archivo de configuración tenemos que volver a compilar. Lanzamos el comando &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle&lt;/code&gt; para recompilar nuestro sitio y luego nuevamente levantamos el servidor local.&lt;/p&gt;
+
+&lt;h1 id=&quot;aboutmarkdown&quot;&gt;about.markdown&lt;/h1&gt;
+&lt;p&gt;Se trata de la página “about” de nuestro sitio. Tienes una pequeña pista de como utilizar formato para enlaces:&lt;/p&gt;
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;jekyllrb.com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://jekyllrb.com/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;cite&gt;Se trata de un enlace a &lt;a href=&quot;https://jekyllrb.com/&quot; class=&quot;link&quot;&gt;jekyllrb.com&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;esto-es-todo&quot;&gt;¿Esto es todo?&lt;/h2&gt;
+&lt;p&gt;En este punto ya tienes un nuevo sitio, con una configuración inicial, un nuevo post original y una página “about”. 
+Pues… de momento no es muy atractivo que digamos. Hay que cambiar el estilo, agregar nuevas páginas como “post, tags, etc”, aún hay que publicarlo en internet &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GRATIS&lt;/code&gt; como se había prometido….
+No te preocupes, no era un &lt;em&gt;clip bait&lt;/em&gt; cuando al principio te indicaba que era rápido de iniciar y que podrías publicarlo totalmente gratis pero este artículo se está alargando demasiado y mi intención era familiarizarte con Jekyll y entender el funcionamiento.&lt;/p&gt;
+
+&lt;h4 id=&quot;y-si-te-dijera-que-todo-lo-anterior-no-vale-absolutamente-para-nada&quot;&gt;¿Y si te dijera que todo lo anterior no vale absolutamente para nada?&lt;/h4&gt;
+&lt;p&gt;Porque hay maneras (y muchas) más sencillas de crear el sitio/blog con su estilo, pestañas, configuración adicional…etc. Podemos hacer nuestro sitio partiendo desde una plantilla lo que nos va a permitir ahorrarnos todo esto que hemos visto. Por tanto, es hora de elegir plantilla. Desde el sitio oficial de &lt;a href=&quot;https://jekyllrb.com/docs/themes/&quot; class=&quot;link&quot;&gt;jekyll&lt;/a&gt; nos ofrecen varios enlaces donde podremos encontrar cientos de plantillas &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GRATIS&lt;/code&gt; … otra vez … &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GRATIS&lt;/code&gt;. Los enlaces son los siguientes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;jamstackthemes.dev&quot; class=&quot;link&quot;&gt;jamstackthemes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;jekyllthemes.org&quot; class=&quot;link&quot;&gt;jekyllthemes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;jekyllthemes.io&quot; class=&quot;link&quot;&gt;jekyllthemes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;jekyll-themes.com&quot; class=&quot;link&quot;&gt;jekyll-themes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Elige una de las plantillas gratuitas para proseguir.&lt;/p&gt;
+
+&lt;h4 id=&quot;te-espero-en-el-siguiente-artículo&quot;&gt;Te espero en el siguiente artículo.&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&quot;/jekyll/crear-blog-jekyll-desde-plantilla/&quot; class=&quot;btn btn--primary btn--large&quot;&gt;Te sigo&lt;/a&gt;&lt;/p&gt;</content><author><name>Pancho</name></author><category term="Jekyll" /><category term="Jekyll" /><category term="Ruby" /><category term="Github" /><summary type="html">¿Qué es Jekyll? Ir al grano Jekyllrb se define como un generador de sitios web estáticos. Principalmente se tratan de blogs o páginas webs en las que no es necesario tener una base de datos. Por ejemplo, si una persona quiere una página web para su restaurante, peluquería, taller o cualquier otro negocio en la que simplemente se usa para tener una “imagen de empresa” en internet. Webs en las que se publicitan servicios, precios, horarios, contacto, etc…</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/jekyll-logo.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/jekyll-logo.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Markdown: Sintáxis básica</title><link href="https://noobchamp.github.io/jekyll/sintaxis-basica/" rel="alternate" type="text/html" title="Markdown: Sintáxis básica" /><published>2021-04-06T00:00:00+00:00</published><updated>2021-04-06T00:00:00+00:00</updated><id>https://noobchamp.github.io/jekyll/sintaxis-basica</id><content type="html" xml:base="https://noobchamp.github.io/jekyll/sintaxis-basica/">&lt;h1 id=&quot;sintáxis-básica-en-jekyll---markdown&quot;&gt;Sintáxis básica en Jekyll - Markdown&lt;/h1&gt;
+
+&lt;h2 id=&quot;texto&quot;&gt;Texto&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Objeto&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;¿Cómo?&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Salto de línea&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Doble espacio&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;noobchamp.github.io&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;[texto](http://example.com)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Destacar&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;`palabra(s)`&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;—&lt;cite&gt;Cita&lt;/cite&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;—&amp;lt;cite&amp;gt;Cita&amp;lt;/cite&amp;gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;em&gt;enfatizar&lt;/em&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;_enfatizar_&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Negrita&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;**Negrita**&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;header-one&quot;&gt;Header one&lt;/h1&gt;
+&lt;p&gt;# Header one&lt;/p&gt;
+&lt;h2 id=&quot;header-two&quot;&gt;Header two&lt;/h2&gt;
+&lt;p&gt;## Header two&lt;/p&gt;
+&lt;h3 id=&quot;header-three&quot;&gt;Header three&lt;/h3&gt;
+&lt;p&gt;### Header three&lt;/p&gt;
+&lt;h4 id=&quot;header-four&quot;&gt;Header four&lt;/h4&gt;
+&lt;p&gt;#### Header four&lt;/p&gt;
+&lt;h5 id=&quot;header-five&quot;&gt;Header five&lt;/h5&gt;
+&lt;p&gt;##### Header five&lt;/p&gt;
+&lt;h6 id=&quot;header-six&quot;&gt;Header six&lt;/h6&gt;
+&lt;p&gt;###### Header six&lt;/p&gt;
+
+&lt;h2 id=&quot;blockquotes&quot;&gt;Blockquotes&lt;/h2&gt;
+
+&lt;p&gt;Una línea blockquote:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Divide y vencerás&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;gt; Divide y vencerás&lt;/p&gt;
+
+&lt;p&gt;Multi line blockquote with a cite reference:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;La gente malgasta su tiempo y luego quieren más.
+Quieren días con más horas, años con más días, vidas con más años.
+Porque si tuvieran ese tiempo de más podrían corregir cualquier error.&lt;/p&gt;
+  &lt;footer&gt;&lt;strong&gt;Ekko&lt;/strong&gt; &amp;mdash; La verdad sobre el tiempo es esta: si no puedes sacarle todo el partido a un momento dado, no te mereces ni un segundo de más.&lt;/footer&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; La gente malgasta su tiempo y luego quieren más.
+&amp;gt; Quieren días con más horas, años con más días, vidas con más años.
+&amp;gt; Porque si tuvieran ese tiempo de más podrían corregir cualquier error.
+&amp;gt; &amp;lt;footer&amp;gt;&amp;lt;strong&amp;gt;Ekko&amp;lt;/strong&amp;gt; &amp;amp;mdash; No necesito horas ni días ni años... solo unos segundos&amp;lt;/footer&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tablas&quot;&gt;Tablas&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Header1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Header2&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Header3&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cell4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cell5&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;cell6&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Foot1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Foot2&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;Foot3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| Header1 | Header2 | Header3 |
+|:--------|:-------:|--------:|
+| cell1   | cell2   | cell3   |
+| cell4   | cell5   | cell6   |
+|-----------------------------|
+| cell1   | cell2   | cell3   |
+| cell4   | cell5   | cell6   |
+|=============================|
+| Foot1   | Foot2   | Foot3   |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;listas-desordenadas-anidada&quot;&gt;Listas desordenadas (anidada)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;List item one
+    &lt;ul&gt;
+      &lt;li&gt;List item one
+        &lt;ul&gt;
+          &lt;li&gt;List item one&lt;/li&gt;
+          &lt;li&gt;List item two&lt;/li&gt;
+          &lt;li&gt;List item three&lt;/li&gt;
+          &lt;li&gt;List item four&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;List item two&lt;/li&gt;
+      &lt;li&gt;List item three&lt;/li&gt;
+      &lt;li&gt;List item four&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;List item two&lt;/li&gt;
+  &lt;li&gt;List item three&lt;/li&gt;
+  &lt;li&gt;List item four&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;listas-ordenadas-anidada&quot;&gt;Listas ordenadas (anidada)&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;List item one
+    &lt;ol&gt;
+      &lt;li&gt;List item one
+        &lt;ol&gt;
+          &lt;li&gt;List item one&lt;/li&gt;
+          &lt;li&gt;List item two&lt;/li&gt;
+          &lt;li&gt;List item three&lt;/li&gt;
+          &lt;li&gt;List item four&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;List item two&lt;/li&gt;
+      &lt;li&gt;List item three&lt;/li&gt;
+      &lt;li&gt;List item four&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;List item two&lt;/li&gt;
+  &lt;li&gt;List item three&lt;/li&gt;
+  &lt;li&gt;List item four&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  * List item one 
+      * List item one 
+          * List item one
+          * List item two
+          * List item three
+          * List item four
+      * List item two
+      * List item three
+      * List item four
+  * List item two
+  * List item three
+  * List item four
+
+  1. List item one 
+      1. List item one 
+          1. List item one
+          2. List item two
+          3. List item three
+          4. List item four
+      2. List item two
+      3. List item three
+      4. List item four
+  2. List item two
+  3. List item three
+  4. List item four
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;direcciones&quot;&gt;Direcciones&lt;/h2&gt;
+
+&lt;address&gt;
+  Calle de la piruleta&lt;br /&gt; Casa de la gominola&lt;br /&gt; País Feliz
+&lt;/address&gt;
+
+&lt;h2 id=&quot;abreviación&quot;&gt;Abreviación&lt;/h2&gt;
+&lt;p&gt;La abreviación de CSS  “Cascading Style Sheets”.
+*[CSS]: Cascading Style Sheets&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;La abreviación de CSS  &quot;Cascading Style Sheets&quot;.
+*[CSS]: Cascading Style Sheets
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;cita&quot;&gt;Cita&lt;/h2&gt;
+
+&lt;p&gt;“Esto es una cita” —&lt;cite&gt;Pepe&lt;/cite&gt;&lt;/p&gt;
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;Esto es una cita&quot; ---&amp;lt;cite&amp;gt;Pepe&amp;lt;/cite&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Pancho</name></author><category term="Jekyll" /><category term="Jekyll" /><category term="markdown" /><category term="md" /><summary type="html">Sintáxis básica en Jekyll - Markdown</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://noobchamp.github.io/images/markdown.webp" /><media:content medium="image" url="https://noobchamp.github.io/images/markdown.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
